@@ -1,0 +1,12 @@
+services:
+  safe-everywhere:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    command: ["start", "--config", "/config/chains.yaml"]
+    volumes:
+      - ./config:/config:ro
+      - safe-data:/data
+
+volumes:
+  safe-data:

@@ -1,0 +1,11 @@
+node_modules/
+dist/
+coverage/
+.env
+config/chains.yaml
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+data/
+.DS_Store
+*.log

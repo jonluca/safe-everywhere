@@ -1,0 +1,120 @@
+# Copy this file to chains.yaml. Environment variables are expanded before YAML parsing.
+databasePath: ../data/safe-everywhere.sqlite
+pollIntervalMs: 12000
+maxBlockRange: 2000
+reorgLookbackBlocks: 12
+rpcTimeoutMs: 20000
+deployerPrivateKeyEnv: DEPLOYER_PRIVATE_KEY
+
+policy:
+  # The transaction sender that is allowed to create source Safes. This is the
+  # primary gas-drain defense. Add allowedSafeAddresses for pre-enrolled addresses.
+  allowedCreators:
+    - "${SAFE_CREATOR_ADDRESS}"
+  # Quote literal addresses too: ["0x1234..."] (unquoted 0x values are YAML numbers).
+  allowedSafeAddresses: []
+  maxDeploymentsPerRun: 12
+  maxDeploymentsPerDay: 25
+  maxTargetsPerSafe: 12
+  maxEstimatedGas: 500000
+  maxFeePerGasGwei: 500
+  requireCanonicalSetup: true
+  allowContractOwners: false
+
+chains:
+  ethereum:
+    name: Ethereum
+    chainId: 1
+    rpcUrl: ${ETHEREUM_RPC_URL}
+    deploy: true
+    create2Compatible: true
+    confirmations: 20
+    startBlock: latest
+  optimism:
+    name: OP Mainnet
+    chainId: 10
+    rpcUrl: ${OPTIMISM_RPC_URL}
+    deploy: true
+    create2Compatible: true
+    confirmations: 20
+    startBlock: latest
+  bnb:
+    name: BNB Smart Chain
+    chainId: 56
+    rpcUrl: ${BNB_RPC_URL}
+    deploy: true
+    create2Compatible: true
+    confirmations: 20
+    startBlock: latest
+  gnosis:
+    name: Gnosis Chain
+    chainId: 100
+    rpcUrl: ${GNOSIS_RPC_URL}
+    deploy: true
+    create2Compatible: true
+    confirmations: 20
+    startBlock: latest
+  polygon:
+    name: Polygon
+    chainId: 137
+    rpcUrl: ${POLYGON_RPC_URL}
+    deploy: true
+    create2Compatible: true
+    confirmations: 128
+    startBlock: latest
+  base:
+    name: Base
+    chainId: 8453
+    rpcUrl: ${BASE_RPC_URL}
+    deploy: true
+    create2Compatible: true
+    confirmations: 20
+    startBlock: latest
+  arbitrum:
+    name: Arbitrum One
+    chainId: 42161
+    rpcUrl: ${ARBITRUM_RPC_URL}
+    deploy: true
+    create2Compatible: true
+    confirmations: 20
+    startBlock: latest
+  celo:
+    name: Celo
+    chainId: 42220
+    rpcUrl: ${CELO_RPC_URL}
+    deploy: true
+    create2Compatible: true
+    confirmations: 20
+    startBlock: latest
+  avalanche:
+    name: Avalanche C-Chain
+    chainId: 43114
+    rpcUrl: ${AVALANCHE_RPC_URL}
+    deploy: true
+    create2Compatible: true
+    confirmations: 12
+    startBlock: latest
+  mantle:
+    name: Mantle
+    chainId: 5000
+    rpcUrl: ${MANTLE_RPC_URL}
+    deploy: true
+    create2Compatible: true
+    confirmations: 20
+    startBlock: latest
+  linea:
+    name: Linea
+    chainId: 59144
+    rpcUrl: ${LINEA_RPC_URL}
+    deploy: true
+    create2Compatible: true
+    confirmations: 20
+    startBlock: latest
+  scroll:
+    name: Scroll
+    chainId: 534352
+    rpcUrl: ${SCROLL_RPC_URL}
+    deploy: true
+    create2Compatible: true
+    confirmations: 20
+    startBlock: latest
