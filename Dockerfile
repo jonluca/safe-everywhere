@@ -1,4 +1,4 @@
-FROM node:24.13.1-bookworm-slim AS build
+FROM node:26.12.1-bookworm-slim AS build
 
 RUN npm install --global pnpm@11.22.0
 WORKDIR /app
@@ -8,7 +8,7 @@ COPY tsconfig.json tsconfig.build.json ./
 COPY src ./src
 RUN pnpm build && pnpm prune --prod
 
-FROM node:24.13.1-bookworm-slim AS runtime
+FROM node:26.12.1-bookworm-slim AS runtime
 ENV NODE_ENV=production
 WORKDIR /app
 COPY --from=build --chown=node:node /app/package.json ./package.json
